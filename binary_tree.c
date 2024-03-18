@@ -1,5 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #define MaxTreeSize 100
 
@@ -8,24 +8,24 @@ typedef struct TreeNode
 	int data;
 	struct TreeNode *lchild;
 	struct TreeNode *rchild;
-} TreeNode,*Tree;
+} TreeNode, *Tree;
 
-Tree CREATE_TREE(int data) //创建一个树节点
+Tree CREATE_TREE(int data) // 创建一个树节点
 {
-	Tree T=(Tree)malloc(sizeof(TreeNode));
-	T->data=data;
-	T->lchild=NULL;
-	T->rchild=NULL;
+	Tree T = (Tree)malloc(sizeof(TreeNode));
+	T->data = data;
+	T->lchild = NULL;
+	T->rchild = NULL;
 	return T;
 }
 
-void INSERT_TREE(Tree ROOT,int data) //插入节点
+void INSERT_TREE(Tree ROOT, int data) // 插入节点
 {
-	if (ROOT==NULL)
+	if (ROOT == NULL)
 	{
-		ROOT=CREATE_TREE(data);
+		ROOT = CREATE_TREE(data);
 	}
-	else if (data<ROOT->data)
+	else if (data < ROOT->data)
 	{
 		INSERT_TREE(ROOT->lchild, data);
 	}
@@ -35,7 +35,7 @@ void INSERT_TREE(Tree ROOT,int data) //插入节点
 	}
 }
 
-Tree SEARCH_TREE(Tree ROOT, int data) //寻找某个节点，返回地址
+Tree SEARCH_TREE(Tree ROOT, int data) // 寻找某个节点，返回地址
 {
 	if (ROOT == NULL)
 	{
@@ -55,7 +55,7 @@ Tree SEARCH_TREE(Tree ROOT, int data) //寻找某个节点，返回地址
 	}
 }
 
-void PREORDER_TREE(Tree ROOT) //前序遍历
+void PREORDER_TREE(Tree ROOT) // 前序遍历
 {
 	if (ROOT != NULL)
 	{
@@ -65,7 +65,7 @@ void PREORDER_TREE(Tree ROOT) //前序遍历
 	}
 }
 
-void INORDER_TREE(Tree ROOT) //中序遍历
+void INORDER_TREE(Tree ROOT) // 中序遍历
 {
 	if (ROOT != NULL)
 	{
@@ -75,7 +75,7 @@ void INORDER_TREE(Tree ROOT) //中序遍历
 	}
 }
 
-void POSTORDER_TREE(Tree ROOT) //后序遍历
+void POSTORDER_TREE(Tree ROOT) // 后序遍历
 {
 	if (ROOT != NULL)
 	{
@@ -85,26 +85,28 @@ void POSTORDER_TREE(Tree ROOT) //后序遍历
 	}
 }
 
-void LEVELORDER_TREE(Tree Root)//层次遍历
+void LEVELORDER_TREE(Tree Root) // 层次遍历
 {
 	Tree queue[100];
-	if(Root==NULL)
+	if (Root == NULL)
 	{
-		return ;
+		return;
 	}
-	int head=0;
-	int tail=0;
-	queue[tail++]=Root;
-	while(head<tail)
+	int head = 0;
+	int tail = 0;
+	queue[tail++] = Root;
+	while (head < tail)
 	{
-		Tree p=queue[head++];
-		printf("%d\n",p->data);
-		if(p->lchild!=NULL) queue[tail++]=p->lchild;
-		if(p->rchild!=NULL) queue[tail++]=p->rchild;
+		Tree p = queue[head++];
+		printf("%d\n", p->data);
+		if (p->lchild != NULL)
+			queue[tail++] = p->lchild;
+		if (p->rchild != NULL)
+			queue[tail++] = p->rchild;
 	}
 }
 
-void DELETE_TREENODE(Tree ROOT, int data)//删除某个节点
+void DELETE_TREENODE(Tree ROOT, int data) // 删除某个节点
 {
 	if (ROOT == NULL)
 	{
@@ -150,12 +152,11 @@ void DELETE_TREENODE(Tree ROOT, int data)//删除某个节点
 	}
 }
 
-
 void DELETE_TREE(Tree ROOT)
 {
 	if (ROOT != NULL)
 	{
-		
+
 		DELETE_TREE(ROOT->lchild);
 		DELETE_TREE(ROOT->rchild);
 		free(ROOT);
